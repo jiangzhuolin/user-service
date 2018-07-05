@@ -1,0 +1,30 @@
+# application name
+spring:
+  application:
+    name: user-service
+  # mysql jpa config
+  datasource:
+    url: jdbc:mysql://192.168.174.200:3306/microservice?characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    username: ms
+    password: ms123
+    dbcp:
+      validation-query: SELECT 1
+      test-while-idle: true
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+# server monitor port
+server:
+  port: 8080
+
+# eureka server cluster
+eureka:
+  client:
+    service-url:
+      defaultZone: http://hadoop1:8000/eureka/,http://hadoop2:8000/eureka/,http://hadoop3:8000/eureka/
